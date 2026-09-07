@@ -1,28 +1,16 @@
-####################################################################
-#                         import
-####################################################################
-
 import warnings
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 import os, glob
 from pathlib import Path
-
-# Import openai and google_genai as main LLM services
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-
-# langchain prompts, memory, chains...
 from langchain.prompts import PromptTemplate, ChatPromptTemplate
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory, ConversationSummaryBufferMemory
-
 from langchain.schema import format_document
-
-
-# document loaders
 from langchain_community.document_loaders import (
     PyPDFLoader,
     TextLoader,
@@ -30,20 +18,12 @@ from langchain_community.document_loaders import (
     CSVLoader,
     Docx2txtLoader,
 )
-
-# text_splitter
 from langchain.text_splitter import (
     RecursiveCharacterTextSplitter,
     CharacterTextSplitter,
 )
-
-# OutputParser
 from langchain_core.output_parsers import StrOutputParser
-
-# Import chroma as the vector store
 from langchain_community.vectorstores import Chroma
-
-# Contextual_compression
 from langchain.retrievers.document_compressors import DocumentCompressorPipeline
 from langchain_community.document_transformers import (
     EmbeddingsRedundantFilter,
@@ -51,21 +31,11 @@ from langchain_community.document_transformers import (
 )
 from langchain.retrievers.document_compressors import EmbeddingsFilter
 from langchain.retrievers import ContextualCompressionRetriever
-
-# Cohere
 from langchain.retrievers.document_compressors import CohereRerank
 from langchain_community.llms import Cohere
-
-# HuggingFace
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_community.llms import HuggingFaceHub
-
-# Import streamlit
 import streamlit as st
-
-####################################################################
-#              Config: LLM services, assistant language,...
-####################################################################
 list_LLM_providers = [
     ":rainbow[**OpenAI**]",
     "**Google Generative AI**",
